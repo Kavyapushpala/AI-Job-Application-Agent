@@ -1,68 +1,167 @@
 # 🤖 AI Job Application Agent
 
-An AI-powered job application assistant that helps candidates analyze resumes and job descriptions, identify matching and missing skills, and perform semantic resume-to-job matching using Large Language Models (LLMs), embeddings, and vector search.
+An AI-powered job application assistant that analyzes resumes and job descriptions, identifies matching and missing skills, and performs semantic resume-to-job matching using **LLMs, embeddings, and vector search**.
 
-The project combines a FastAPI backend, PostgreSQL database, ChromaDB vector database, and AI-powered analysis to build an intelligent foundation for automating the job application workflow.
+---
+
+## 🎯 Project Goal
+
+The goal of this project is to build an **AI-powered job application assistant** that helps candidates understand how well their resume matches a job description, identify skill gaps, and receive AI-based recommendations for improving their applications.
 
 ---
 
 ## 🚀 Features
 
-- 📄 Resume Upload
-- 🔍 Resume Text Extraction from PDF
-- 🤖 AI-powered Resume Parsing
-- 💼 Job Description Management
-- 🧠 Semantic Resume-to-Job Matching
-- 🔎 Vector Similarity Search using ChromaDB
-- 📊 Skill Matching and Gap Analysis
-- 🗄️ PostgreSQL Database Integration
-- ⚡ FastAPI REST APIs
-- 🔗 LangChain/LangGraph-based AI workflow development
-- 🌐 Frontend integration ready
+* 📄 Resume PDF upload & text extraction
+* 🤖 AI-powered resume parsing
+* 💼 Job description analysis
+* 🧠 Semantic resume-to-job matching
+* 🔎 Vector similarity search using ChromaDB
+* 📊 Skill matching & gap analysis
+* 🗄️ PostgreSQL database integration
+* ⚡ FastAPI REST APIs
+* 🔗 LangChain / LangGraph workflow support
+* 🌐 Frontend integration ready
 
 ---
 
-## 🏗️ System Architecture
+## 🏗️ Architecture
 
 ```text
-                    ┌─────────────────────┐
-                    │       Frontend      │
-                    │      React.js       │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │      FastAPI        │
-                    │      REST APIs      │
-                    └──────────┬──────────┘
-                               │
-              ┌────────────────┼────────────────┐
-              │                │                │
-              ▼                ▼                ▼
-       ┌─────────────┐  ┌─────────────┐  ┌─────────────┐
-       │ Resume      │  │ Job         │  │ AI / LLM    │
-       │ Processing  │  │ Processing  │  │ Analysis    │
-       └──────┬──────┘  └──────┬──────┘  └──────┬──────┘
-              │                │                │
-              └────────────────┼────────────────┘
-                               ▼
-                    ┌─────────────────────┐
-                    │    Embeddings       │
-                    │ Sentence Transformers│
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │      ChromaDB       │
-                    │    Vector Search    │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │ Matching & Analysis │
-                    │ Skill Gap / Score   │
-                    └─────────────────────┘
+                 ┌─────────────────────┐
+                 │      Frontend       │
+                 │   React / Web App   │
+                 └──────────┬──────────┘
+                            │
+                            ▼
+                 ┌─────────────────────┐
+                 │      FastAPI        │
+                 │     Backend         │
+                 └──────────┬──────────┘
+                            │
+            ┌───────────────┼───────────────┐
+            │               │               │
+            ▼               ▼               ▼
+     ┌────────────┐  ┌────────────┐  ┌────────────┐
+     │ PostgreSQL │  │  ChromaDB  │  │    LLM     │
+     │  Database  │  │ Vector DB  │  │ AI Engine  │
+     └────────────┘  └────────────┘  └────────────┘
+            │               │               │
+            └───────────────┼───────────────┘
+                            ▼
+                 ┌─────────────────────┐
+                 │ Resume ↔ Job Match   │
+                 │ Skill Gap Analysis   │
+                 └─────────────────────┘
+```
 
-                    PostgreSQL
-                    ──────────
-              Resume & Job Metadata
+---
+
+## 🔄 Workflow
+
+```text
+Resume PDF
+    ↓
+PDF Text Extraction
+    ↓
+Resume Parsing
+    ↓
+Generate Embeddings
+    ↓
+Store in ChromaDB
+    ↓
+Job Description
+    ↓
+Semantic Matching
+    ↓
+Skill Matching
+    ↓
+Skill Gap Analysis
+    ↓
+AI Recommendations
+```
+
+---
+
+## 🛠️ Tech Stack
+
+| Category        | Technologies             |
+| --------------- | ------------------------ |
+| Backend         | Python, FastAPI          |
+| AI/LLM          | LLMs, Prompt Engineering |
+| Embeddings      | Sentence Transformers    |
+| RAG / Agents    | LangChain, LangGraph     |
+| Vector Database | ChromaDB                 |
+| Database        | PostgreSQL               |
+| PDF Processing  | PyPDF                    |
+| API Server      | Uvicorn                  |
+| Frontend        | React.js                 |
+
+---
+
+## ⚙️ Setup
+
+### Clone Repository
+
+```bash
+git clone https://github.com/Kavyapushpala/AI-Job-Application-Agent.git
+cd AI-Job-Application-Agent
+```
+
+### Create Virtual Environment
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Configure Environment Variables
+
+Create a `.env` file:
+
+```env
+DATABASE_URL=postgresql://username:password@localhost:5432/job_agent
+GEMINI_API_KEY=your_api_key
+```
+
+### Run FastAPI
+
+```bash
+uvicorn main:app --reload
+```
+
+### API Documentation
+
+Open:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+---
+
+## 🔮 Future Scope
+
+* AI resume optimization
+* Personalized cover letter generation
+* Automated job discovery
+* Agentic job application workflow
+* Application tracking
+* React frontend dashboard
+
+---
+
+## 👩‍💻 Author
+
+**Kavya Varshitha Pushpala**
+B.Tech – Artificial Intelligence & Data Science
+SRKR Engineering College
+
+**GitHub:** https://github.com/Kavyapushpala
+**LinkedIn:** https://www.linkedin.com/in/kavya-varshitha-pushpala-2et32/
