@@ -121,14 +121,6 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### Configure Environment Variables
-
-Create a `.env` file:
-
-```env
-DATABASE_URL=postgresql://username:password@localhost:5432/job_agent
-GEMINI_API_KEY=your_api_key
-```
 
 ### Run FastAPI
 
